@@ -7,4 +7,20 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.1" />
+        <PackageReference Include="Dapper" Version="2.0.123" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Application" />
+      <Folder Include="Domain" />
+      <Folder Include="Infra\Connectors" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="id_rsa_erikalima" />
+      <None Remove="id_rsa_erikalima.pub" />
+    </ItemGroup>
+
 </Project>
