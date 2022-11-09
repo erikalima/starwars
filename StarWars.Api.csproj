@@ -10,17 +10,18 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.1" />
         <PackageReference Include="Dapper" Version="2.0.123" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Application" />
-      <Folder Include="Domain" />
-      <Folder Include="Infra\Connectors" />
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="id_rsa_erikalima" />
       <None Remove="id_rsa_erikalima.pub" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Startup.cs" />
+      <Compile Remove="Infra\Connectors\Responses\FilmConnectorResponse.cs" />
     </ItemGroup>
 
 </Project>
