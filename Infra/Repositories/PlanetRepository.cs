@@ -68,7 +68,7 @@ namespace StarWars.Api.Infra.Repositories
                 var films = await _filmRepository.GetAll();
                 return BuildPlanets(planets, films);
             }
-            return null;
+            return planets;
         }
 
         public async ValueTask Delete(int id)

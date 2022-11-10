@@ -37,8 +37,7 @@ namespace StarWars.Api.Application.Handlers
             {
                 Console.WriteLine(e);
                 throw;
-            }
- 
+            }   
         }
     }
 }

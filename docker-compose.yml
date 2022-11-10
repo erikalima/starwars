@@ -1,4 +1,8 @@
 services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
