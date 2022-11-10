@@ -9,6 +9,7 @@ builder.Services.AddOptions(builder.Configuration);
 builder.Services.AddHttpClient();
 builder.Services.AddConnectors();
 builder.Services.RegisterHandlers();
+builder.Services.AddServices();
 
 var app = builder.Build();
 app.UseHttpsRedirection();

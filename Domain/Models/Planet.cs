@@ -7,7 +7,7 @@ namespace StarWars.Api.Domain.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Climate { get; set; }
-        public string Terrains { get; set; }
+        public string Terrain { get; set; }
         public List<Film> Films { get; set; }
     }
 }

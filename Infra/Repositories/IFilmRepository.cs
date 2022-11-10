@@ -7,7 +7,7 @@ namespace StarWars.Api.Infra.Repositories
     public interface IFilmRepository
     {
         ValueTask<Film> GetById(int id);
-
-        ValueTask<IEnumerable<Film>> GetByIds(List<int> ids);
+        ValueTask InsertFilm(Film film);
+        ValueTask InsertFilmsForPlanet(int planetId, IEnumerable<int> filmsId);
     }
 }

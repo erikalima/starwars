@@ -15,11 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="id_rsa_erikalima" />
-      <None Remove="id_rsa_erikalima.pub" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="Startup.cs" />
       <Compile Remove="Infra\Connectors\Responses\FilmConnectorResponse.cs" />
     </ItemGroup>

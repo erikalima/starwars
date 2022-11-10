@@ -21,7 +21,7 @@ namespace StarWars.Api.Infra.Connectors
         
         public async ValueTask<PlanetConnectorResponse> GetPlanet(int id)
         {
-            var endpoint = $"https://swapi.dev/api/people/{id}/";
+            var endpoint = $"https://swapi.dev/api/planets/{id}/";
 
             try
             {

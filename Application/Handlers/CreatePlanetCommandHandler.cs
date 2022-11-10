@@ -1,75 +1,45 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using StarWars.Api.Application.Commands;
-using StarWars.Api.Domain.Models;
+using StarWars.Api.Application.Services;
 using StarWars.Api.Extensions;
-using StarWars.Api.Infra.Connectors;
 using StarWars.Api.Infra.Repositories;
 
 namespace StarWars.Api.Application.Handlers
 {
     public class CreatePlanetCommandHandler: IRequestHandler<CreatePlanetCommand, Response>
     {
-        private readonly IPlanetConnector _planetConnector;
-        private readonly IFilmRepository _filmRepository;
-        private readonly IFilmConnector _filmConnector;
+        private readonly IPlanetRepository _planetRepository;
+        private readonly IPlanetService _planetService;
         
-        public CreatePlanetCommandHandler(IPlanetConnector planetConnector,
-                                          IFilmConnector filmConnector,
-                                          IFilmRepository filmRepository )
+        public CreatePlanetCommandHandler(IPlanetRepository planetRepository,
+                                          IPlanetService planetService)
         {
-            _planetConnector = planetConnector;
-            _filmConnector = filmConnector;
-            _filmRepository = filmRepository;
+            _planetRepository = planetRepository;
+            _planetService = planetService;
         }
 
         public async Task<Response> Handle(CreatePlanetCommand request, CancellationToken cancellationToken)
         {
-            //consulta no banco se tem o planeta
-            //sim? -> retorna ok
-            
-            //não? -> consulta planeta na api
-            var planets = await _planetConnector.GetPlanet(request.Id);
-            
-            //pega os filmes
-            
-            //insere planeta
-            //insere a relação de filmes 
-            
-            
-            return Response.Ok();
-        }
-
-        private async ValueTask<IEnumerable<int>> GetFilms(IEnumerable<string> urlsFilms)
-        {
-            var films = new List<int>();
-            foreach (var url in urlsFilms)
+            try
             {
-                var urlSplited = url.Split("/");
-                var id = int.Parse(urlSplited.LastOrDefault());
+                var planetInDataBase = await _planetRepository.GetById(request.Id);
+                if(planetInDataBase is not null)
+                    return Response.Ok();
 
-                await InsertFilm(id);
-                films.Add(id);
+                await _planetService.SavePlanet(request);
+
+                return Response.Ok();
             }
-            return films;
-        }
-
-        private async ValueTask InsertFilm(int id)
-        {
-            var filmInDatabase = await _filmRepository.GetById(id);
-            if (filmInDatabase is not null)
-                return;
-
-            var film = await _filmConnector.GetById(id);
-            //insere o filme
-            return;
-
-
+            catch (Exception e)
+            {
+                //log erro
+                Console.WriteLine(e);
+                throw;
+            }
+ 
         }
     }
 }

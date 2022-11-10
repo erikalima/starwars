@@ -17,26 +17,7 @@ namespace StarWars.Api.Infra.Connectors
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
         }
-        
-        public async ValueTask<IEnumerable<Film>> GetFilmsByUrls(IEnumerable<string> urlsFilms)
-        {
-            try
-            {
-                var films = new List<Film>();
-                foreach (var endpoint in urlsFilms)
-                {
-                    var response = await _client.GetFromJsonAsync<Film>(endpoint);
-                    films.Add(response);
-                }
-                return films;
-            }
-            catch (Exception ex)
-            {
-                //_logger.LogWarning("Erro ao buscar calendario no serviço {Endpoint} : {Messages}", endpoint, ex.Message);
-                throw;
-            }
-        }
-        
+
         public async ValueTask<Film> GetById(int id)
         {
             var endpoint = $"https://swapi.dev/api/films/{id}/";

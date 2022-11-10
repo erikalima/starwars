@@ -4,7 +4,7 @@ namespace StarWars.Api.Infra.Repositories.Statements
     {
         internal const string GetByIds = @"	SELECT
 												Id,
-												Name,
+												Title,
 												Director,
 												ReleaseDate,
 												CreatedDate
@@ -16,5 +16,8 @@ namespace StarWars.Api.Infra.Repositories.Statements
         internal const string Insert = @"		
 										INSERT INTO StarWars.dbo.Film (Id, Title, Director, ReleaseDate, CreatedDate)
 										VALUES(@id, @title, @director, @releaseDate, getdate())";
+        
+        internal const string InsertFilmsForPlanet = @"INSERT INTO StarWars.dbo.Planet_Film (IdPlanet, IdFilm)
+                                                    VALUES(@planetId, @filmId)";
     }
 }

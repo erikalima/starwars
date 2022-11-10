@@ -3,6 +3,7 @@ using System.Net;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StarWars.Api.Application.Services;
 using StarWars.Api.Infra;
 using StarWars.Api.Infra.Connectors;
 using StarWars.Api.Infra.Repositories;
@@ -30,6 +31,13 @@ namespace StarWars.Api.Extensions
             return services
                 .AddTransient<IPlanetConnector, PlanetConnector>()
                 .AddTransient<IFilmConnector, FilmConnector>();
+        }
+        
+        public static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            return services
+                .AddTransient<IPlanetService, PlanetService>()
+                .AddTransient<IFilmService, FilmService>();
         }
         
         public static IServiceCollection RegisterHandlers(this IServiceCollection services)

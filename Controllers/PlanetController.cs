@@ -30,7 +30,7 @@ namespace StarWars.Api.Controllers
         [ProducesResponseType(typeof(void), (int) HttpStatusCode.Unauthorized)]
         public async Task<IActionResult> Get()
         {
-            await _planetRepository.GetPlanet();
+            //await _planetRepository.GetPlanet();
             return Ok();
         }
         
