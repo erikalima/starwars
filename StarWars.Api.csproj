@@ -17,6 +17,25 @@
     <ItemGroup>
       <Compile Remove="Startup.cs" />
       <Compile Remove="Infra\Connectors\Responses\FilmConnectorResponse.cs" />
+      <Compile Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Tests\TestProject1\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Tests\TestProject1\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Tests\TestProject1\obj\TestProject1.csproj.nuget.dgspec.json" />
     </ItemGroup>
 
 </Project>

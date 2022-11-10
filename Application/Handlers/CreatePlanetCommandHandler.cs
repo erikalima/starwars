@@ -35,7 +35,6 @@ namespace StarWars.Api.Application.Handlers
             }
             catch (Exception e)
             {
-                //log erro
                 Console.WriteLine(e);
                 throw;
             }

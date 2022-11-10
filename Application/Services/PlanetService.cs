@@ -25,19 +25,15 @@ namespace StarWars.Api.Application.Services
         public async ValueTask SavePlanet(CreatePlanetCommand request)
         {
             var planet = await _planetConnector.GetPlanet(request.Id);
-            await SaveInternalPlanet(planet, request.Id);
-            
-            if(planet is not null)
+            if (planet is not null)
+            {
+                await SaveInternalPlanet(planet, request.Id);
                 await _filmeService.SaveFilm(planet.Films, request.Id);
+            }
         }
         
         private async ValueTask SaveInternalPlanet(PlanetConnectorResponse planet, int id)
         {
-            if (planet is null)
-            {
-                //log warning de planeta não localizado na consulta da api publica
-            }
-
             var planetDomain = PlanetDomain(planet, id);
             await _planetRepository.Insert(planetDomain);
         }

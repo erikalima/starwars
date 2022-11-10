@@ -53,8 +53,6 @@ namespace StarWars.Api.Application.Services
                 film.Id = id; 
                 await _filmRepository.InsertFilm(film);
             }
-
-            //log warning de filme não localizado na consulta da api publica
             return;
         }
 
