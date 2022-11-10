@@ -10,5 +10,7 @@ namespace StarWars.Api.Domain.Models
         public string Director { get; set; }
         [JsonPropertyName("release_date")]
         public DateTime ReleaseDate { get; set; }
+
+        public int PlanetId { get; set; }
     }
 }

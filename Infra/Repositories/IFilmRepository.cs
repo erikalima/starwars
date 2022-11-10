@@ -9,5 +9,7 @@ namespace StarWars.Api.Infra.Repositories
         ValueTask<Film> GetById(int id);
         ValueTask InsertFilm(Film film);
         ValueTask InsertFilmsForPlanet(int planetId, IEnumerable<int> filmsId);
+        ValueTask<IEnumerable<Film>> GetAll();
+        ValueTask<IEnumerable<Film>> GetByPlanetId(int planetId);
     }
 }

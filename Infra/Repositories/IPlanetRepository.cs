@@ -8,5 +8,8 @@ namespace StarWars.Api.Infra.Repositories
     {
         ValueTask<Planet> GetById(int id);
         ValueTask Insert(Planet planet);
-    }
+        ValueTask<IEnumerable<Planet>> GetAll();
+        ValueTask<IEnumerable<Planet>> GetByName(string name);
+        ValueTask Delete(int id);
+    }   
 }

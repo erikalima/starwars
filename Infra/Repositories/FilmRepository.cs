@@ -48,5 +48,17 @@ namespace StarWars.Api.Infra.Repositories
                 await connection.ExecuteAsync(FilmStatements.InsertFilmsForPlanet, new {planetId, filmId = filmsArray[i]});
             }
         }
+        
+        public async ValueTask<IEnumerable<Film>> GetAll()
+        {
+            using var connection = CreateSqlServerConnection();
+            return await connection.QueryAsync<Film>(FilmStatements.GetAll);
+        }
+        
+        public async ValueTask<IEnumerable<Film>> GetByPlanetId(int planetId)
+        {
+            using var connection = CreateSqlServerConnection();
+            return await connection.QueryAsync<Film>(FilmStatements.GetByPlanetId, new {planetId});
+        }
     }
 }
