@@ -6,7 +6,7 @@ Api para informações da franquia Star Wars.
 Essa api foi feita na linguagem .Net Core versão 6, banco de dados SQL, os dois com suporte docker.
 
 ## Requerido
-Máquina com docker instalado
+Máquina com git e docker instalado
 
 ## Instalação
 Para rodar o projeto, em linha de comando no diretório do mesmo, execute
